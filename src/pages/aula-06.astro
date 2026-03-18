@@ -1,0 +1,437 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-06");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-05");
+const proximaAula = aulas.find((item) => item.slug === "aula-07");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-06"];
+---
+
+<BaseLayout
+  title="Aula 06 | Plataforma Raspberry Pi"
+  description="Aula 06 do curso de IoT, Cloud e Indústria 4.0: plataforma Raspberry Pi, Raspberry Pi OS, GPIO, ambiente Python e aplicações embarcadas."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-cloud">
+            <Icon name="server" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Raspberry Pi</span>
+          <span class="lesson-chip">SBC</span>
+          <span class="lesson-chip">GPIO</span>
+          <span class="lesson-chip">Python</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Plataforma Raspberry Pi e computação embarcada</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Sistema operacional, hardware, GPIO e ambiente Python</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Introdução prática com maior capacidade computacional</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Outras Soluções em Python</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="server" />
+          </div>
+          <h3>O que é Raspberry Pi?</h3>
+          <p>
+            Raspberry Pi é um minicomputador de baixo consumo, baseado em
+            arquitetura ARM, capaz de rodar sistema operacional, aplicações
+            Python, interfaces gráficas e projetos IoT com maior flexibilidade
+            que uma placa microcontrolada.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="chip" />
+          </div>
+          <h3>Por que ele é diferente?</h3>
+          <p>
+            Ao contrário de um Arduino ou NodeMCU, o Raspberry Pi executa um
+            sistema operacional completo, permitindo multitarefa, softwares mais
+            ricos e uso como estação de desenvolvimento ou nó inteligente.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="code" />
+          </div>
+          <h3>Onde entra Python?</h3>
+          <p>
+            O Raspberry Pi é muito usado como ambiente Python para automação,
+            monitoramento, IoT, scripts, integração com sensores e até
+            aplicações educacionais.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">O que o aluno deve dominar nesta etapa</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>
+              Entender o Raspberry Pi como plataforma de computação embarcada.
+            </li>
+            <li>
+              Conhecer seus componentes principais e recursos de hardware.
+            </li>
+            <li>Relacionar GPIO, rede, vídeo, câmera e armazenamento.</li>
+            <li>Compreender o papel do Raspberry Pi OS.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Conhecer ferramentas de instalação e preparação do sistema.</li>
+            <li>Relacionar Raspberry Pi com ambiente Python.</li>
+            <li>Visualizar sua aplicação em IoT, automação e inovação.</li>
+            <li>Comparar o Raspberry Pi com outras plataformas estudadas.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Conceitos fundamentais</h2>
+        <p class="section-subtitle">Base teórica sobre a plataforma</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>SBC — Single Board Computer</h3>
+          <p>
+            O Raspberry Pi é apresentado como um computador de placa única,
+            reunindo CPU, memória, interfaces e conectividade em formato
+            compacto.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Arquitetura ARM</h3>
+          <p>
+            O material destaca uso de arquitetura ARM, ideal para baixo consumo,
+            menor geração de calor e aplicações embarcadas de uso geral.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>GPIO</h3>
+          <p>
+            Os 40 pinos GPIO permitem conexão com sensores, motores, LEDs,
+            circuitos e periféricos diversos, integrando computação e
+            eletrônica.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Sistema operacional</h3>
+          <p>
+            Diferente de placas com firmware simples, o Raspberry Pi depende de
+            um sistema operacional instalado em cartão microSD.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Componentes e recursos destacados</h2>
+        <p class="section-subtitle">Pontos centrais apresentados na aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Interfaces e conectividade</h3>
+          <ul class="topic-list">
+            <li>Ethernet, Wi-Fi e Bluetooth.</li>
+            <li>USB 2.0 e USB 3.0 nos modelos atuais.</li>
+            <li>Saída micro HDMI para vídeo.</li>
+            <li>CSI para câmera e DSI para display externo.</li>
+            <li>Possibilidade de PoE em alguns cenários.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Hardware básico</h3>
+          <ul class="topic-list">
+            <li>SoC com CPU/GPU integradas.</li>
+            <li>Modelos com múltiplos núcleos e 64 bits.</li>
+            <li>Memória RAM e armazenamento em microSD.</li>
+            <li>Alimentação em 5V.</li>
+            <li>Leds de status e conectores de expansão.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Raspberry Pi OS e preparação do ambiente</h2>
+        <p class="section-subtitle">Etapas de inicialização da plataforma</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Raspberry Pi OS</h3>
+          <p>
+            A aula apresenta o Raspberry Pi OS como base do ambiente, com
+            histórico ligado ao Raspbian e suporte a diferentes arquiteturas.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Cartão microSD</h3>
+          <p>
+            O sistema operacional é instalado em cartão de memória, já que o
+            dispositivo não possui disco rígido interno tradicional.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>NOOBS, Etcher e Formatter</h3>
+          <p>
+            O material cita ferramentas de apoio para preparar imagens do
+            sistema e gravá-las corretamente no cartão.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Ambiente de uso</h3>
+          <p>
+            Depois de preparado, o Raspberry Pi pode executar navegador, Python,
+            ferramentas de desenvolvimento e aplicações ligadas a IoT.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Fluxo lógico de uso na prática</h2>
+        <p class="section-subtitle">
+          Como a plataforma se encaixa em um projeto
+        </p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chip" /></div>
+          <h3>1. Preparar hardware</h3>
+          <p>
+            Selecionar placa, alimentação, microSD e periféricos necessários.
+          </p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="server" /></div>
+          <h3>2. Instalar sistema</h3>
+          <p>Gravar imagem do Raspberry Pi OS e iniciar o ambiente.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="code" /></div>
+          <h3>3. Programar</h3>
+          <p>Utilizar Python, IDEs e bibliotecas para desenvolver a solução.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>4. Integrar</h3>
+          <p>Ligar sensores, rede, display e aplicações embarcadas ou IoT.</p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A lógica central da aula é:
+        <strong>preparar → instalar → programar → integrar</strong>.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Exemplos e possibilidades destacadas</h2>
+        <p class="section-subtitle">Usos práticos apresentados no material</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>MicroPython no Raspberry Pi</h3>
+          <p>
+            O material mostra exemplos com <code>machine</code>, <code
+              >utime</code
+            >, LED onboard, I2C e leitura de ADC, reforçando integração entre
+            software e hardware.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Temperatura e display</h3>
+          <p>
+            Um dos exemplos usa leitura analógica e escrita via I2C, ilustrando
+            aplicações em monitoramento e interface embarcada.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Multimídia e produtividade</h3>
+          <p>
+            A aula também destaca possibilidades como navegador, edição,
+            servidor NAS, central multimídia e outras aplicações além da
+            automação.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Educação e inovação</h3>
+          <p>
+            O Raspberry Pi é apresentado como plataforma de baixo custo com
+            forte apelo educacional e potencial para projetos inovadores.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Comparações e extensões da aula</h2>
+        <p class="section-subtitle">Relações com outras plataformas</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Arduino vs Raspberry Pi</h3>
+          <p>
+            A aula reforça que Arduino e Raspberry Pi atendem necessidades
+            diferentes: microcontrolador enxuto versus computador embarcado mais
+            completo.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Raspberry Pi Pico</h3>
+          <p>
+            O material menciona o Pico como microcontrolador da família, útil
+            para distinguir linhas SBC e MCU dentro do ecossistema Raspberry.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Acesso remoto</h3>
+          <p>
+            Também aparecem referências a soluções de acesso remoto e
+            gerenciamento, ampliando possibilidades de uso em projetos
+            distribuídos.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Ambiente Python</h3>
+          <p>
+            Ferramentas como Thonny reforçam o papel do Raspberry Pi como ponte
+            natural entre hardware, Linux e desenvolvimento em Python.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Estruture um plano de projeto com Raspberry Pi definindo:</p>
+          <ul class="topic-list">
+            <li>qual será a função principal do dispositivo;</li>
+            <li>quais periféricos e interfaces serão usados;</li>
+            <li>qual ambiente Python será adotado;</li>
+            <li>como o sistema operacional será preparado;</li>
+            <li>como a solução se conecta a um cenário real de IoT.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

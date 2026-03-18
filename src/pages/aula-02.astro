@@ -1,0 +1,429 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-02");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-01");
+const proximaAula = aulas.find((item) => item.slug === "aula-03");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-02"];
+---
+
+<BaseLayout
+  title="Aula 02 | Middleware e Protocolos de Rede"
+  description="Aula 02 do curso de IoT, Cloud e Indústria 4.0: middleware, plataformas de comunicação IoT e protocolos de rede."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-rede">
+            <Icon name="network" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Middleware</span>
+          <span class="lesson-chip">Protocolos</span>
+          <span class="lesson-chip">Integração</span>
+          <span class="lesson-chip">Comunicação IoT</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Middleware e Protocolos de Rede para IoT</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Conectar dispositivos, aplicações e serviços</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Fundamentação intermediária</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Plataforma Arduino Tinkercad</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="network" />
+          </div>
+          <h3>O que é middleware?</h3>
+          <p>
+            Middleware é a camada de software que permite comunicação,
+            interoperabilidade e troca estruturada de dados entre sistemas,
+            aplicações, dispositivos e serviços distribuídos.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="cloud" />
+          </div>
+          <h3>Por que ele é importante?</h3>
+          <p>
+            Em IoT, middleware reduz acoplamento, padroniza integrações,
+            facilita segurança e ajuda a escalar a comunicação entre muitos
+            dispositivos.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="wifi" />
+          </div>
+          <h3>Onde entram os protocolos?</h3>
+          <p>
+            Os protocolos definem como os dados trafegam entre sensores,
+            gateways, servidores, aplicações e plataformas em nuvem.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">O que o aluno deve dominar nesta etapa</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender o papel do middleware em arquiteturas IoT.</li>
+            <li>Conhecer tipos de middleware e serviços de integração.</li>
+            <li>
+              Relacionar estruturas como JSON, REST, XML e SOAP com
+              interoperabilidade.
+            </li>
+            <li>Identificar plataformas middleware e cloud aplicadas à IoT.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Compreender os principais protocolos de rede para IoT.</li>
+            <li>
+              Comparar protocolos conforme alcance, energia, segurança e taxa de
+              dados.
+            </li>
+            <li>
+              Relacionar aplicações IoT à escolha de protocolos e plataformas.
+            </li>
+            <li>Preparar base técnica para as aulas práticas seguintes.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Conceitos fundamentais</h2>
+        <p class="section-subtitle">
+          Base teórica sobre middleware e comunicação
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>Middleware</h3>
+          <p>
+            É um software intermediário que permite que diferentes aplicações e
+            componentes troquem dados, executem integrações e se comuniquem
+            usando padrões comuns em sistemas distribuídos.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Interoperabilidade</h3>
+          <p>
+            É a capacidade de plataformas, dispositivos e aplicações, escritos
+            em tecnologias diferentes, conversarem entre si de forma
+            compreensível e confiável.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Mensageria e APIs</h3>
+          <p>
+            A comunicação pode ocorrer por APIs REST, troca de mensagens,
+            eventos, filas, brokers e outras abordagens que diminuem
+            acoplamento.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Comunicação IoT</h3>
+          <p>
+            Em IoT, a escolha do protocolo depende de fatores como alcance,
+            consumo de energia, vida útil da bateria, segurança e volume de
+            dados.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">
+          Estruturas e serviços usados no middleware
+        </h2>
+        <p class="section-subtitle">Padrões citados na aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Estruturas de dados</h3>
+          <p>
+            JSON, XML e outros formatos ajudam a padronizar a representação e o
+            intercâmbio de informações entre sistemas.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Integrações por API</h3>
+          <p>
+            APIs REST permitem comunicação desacoplada entre aplicações, muito
+            usada em microsserviços e plataformas cloud.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Serviços de mensageria</h3>
+          <p>
+            Brokers e filas ajudam no fluxo assíncrono de dados, especialmente
+            em cenários com múltiplos dispositivos e eventos simultâneos.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Ambientes distribuídos</h3>
+          <p>
+            Middleware também ajuda a gerenciar conexões seguras, tráfego e
+            integração entre módulos em arquiteturas distribuídas.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Plataformas citadas na aula</h2>
+        <p class="section-subtitle">Exemplos de soluções e ecossistemas</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Cloud IoT</h3>
+          <p>
+            A aula cita ecossistemas como Google Cloud, AWS, IBM Cloud, Oracle
+            Cloud e Azure como base para armazenamento, processamento e
+            integração.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Middleware IoT</h3>
+          <p>
+            ThingsBoard, ThingSpeak, OpenRemote, OpenHAB, DoJot, WSO2 e outras
+            plataformas aparecem como soluções para integração e gerenciamento.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Prototipação</h3>
+          <p>
+            Arduino, Raspberry Pi, Tinkercad e outras plataformas aparecem como
+            base prática para geração e consumo de dados em projetos IoT.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Integração com edge e nuvem</h3>
+          <p>
+            O fluxo pode acontecer localmente, em edge computing ou em nuvem,
+            dependendo da arquitetura e dos requisitos do projeto.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Protocolos de rede para IoT</h2>
+        <p class="section-subtitle">Protocolos apresentados no slide</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Protocolos de aplicação / integração</h3>
+          <ul class="topic-list">
+            <li>
+              <strong>MQTT:</strong> modelo publicação/assinatura, muito usado em
+              IoT.
+            </li>
+            <li>
+              <strong>CoAP:</strong> protocolo leve para dispositivos e automação
+              restrita.
+            </li>
+            <li>
+              <strong>XMPP-IoT:</strong> troca de mensagens e comunicação síncrona.
+            </li>
+            <li>
+              <strong>HTTP / RESTful:</strong> integração web amplamente adotada.
+            </li>
+            <li>
+              <strong>DDS:</strong> distribuição de dados em sistemas distribuídos.
+            </li>
+            <li>
+              <strong>AMQP:</strong> mensageria orientada a troca de mensagens.
+            </li>
+            <li>
+              <strong>M2M:</strong> comunicação máquina a máquina em cenários industriais.
+            </li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Protocolos e tecnologias de conectividade</h3>
+          <ul class="topic-list">
+            <li>
+              <strong>Wi-Fi:</strong> comunicação sem fio e alta taxa de dados.
+            </li>
+            <li>
+              <strong>Bluetooth:</strong> alcance curto e baixo consumo em alguns
+              cenários.
+            </li>
+            <li>
+              <strong>ZigBee:</strong> muito usado em automação residencial.
+            </li>
+            <li><strong>Z-Wave:</strong> automação comercial e residencial.</li>
+            <li>
+              <strong>6LoWPAN:</strong> compressão e encapsulamento em redes leves.
+            </li>
+            <li><strong>Thread:</strong> IPv6 para automação residencial.</li>
+            <li>
+              <strong>NFC:</strong> comunicação de rádio de curtíssimo alcance.
+            </li>
+            <li>
+              <strong>LoRaWAN:</strong> comunicação de longa distância em redes WAN.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Exemplos de aplicação de IoT</h2>
+        <p class="section-subtitle">Cenários apresentados na aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Wearables e saúde</h3>
+          <p>
+            Relógios inteligentes, dispositivos vestíveis, monitoramento
+            clínico, prontuário e telemedicina.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Casa e cidades inteligentes</h3>
+          <p>
+            TVs, geladeiras, fechaduras, iluminação, trânsito, ruído, crime e
+            poluição.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Carro conectado e agricultura</h3>
+          <p>
+            Reconhecimento de motorista, partida inteligente, monitoramento de
+            temperatura e sistemas de irrigação automatizados.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Smart Factory</h3>
+          <p>
+            Automação industrial, comunicação M2M, monitoramento contínuo e
+            integração de dispositivos em ambientes produtivos.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Escolha um cenário IoT e defina:</p>
+          <ul class="topic-list">
+            <li>qual middleware faria a integração dos dados;</li>
+            <li>qual protocolo atenderia melhor ao cenário;</li>
+            <li>
+              qual seria a justificativa em termos de alcance, energia e
+              segurança;
+            </li>
+            <li>como a solução poderia ser publicada em ambiente de teste.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

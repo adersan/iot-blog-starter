@@ -1,0 +1,106 @@
+---
+import ResourceCard from "./ResourceCard.astro";
+
+interface ResourceItem {
+  title: string;
+  description: string;
+  url: string;
+  type: string;
+  available: boolean;
+}
+
+interface LessonResourcesProps {
+  resources: {
+    leituras: ResourceItem[];
+    aprendaMais: ResourceItem[];
+    atividades: ResourceItem[];
+    referencias: ResourceItem[];
+  };
+}
+
+const { resources } = Astro.props as LessonResourcesProps;
+---
+
+<section class="section resources-section">
+  <div class="section-header-inline">
+    <h2 class="section-title">Leituras específicas</h2>
+    <p class="section-subtitle">Materiais dirigidos para aprofundamento</p>
+  </div>
+
+  <div class="grid grid-2">
+    {
+      resources.leituras.map((item: ResourceItem) => (
+        <ResourceCard
+          title={item.title}
+          description={item.description}
+          url={item.url}
+          type={item.type}
+          available={item.available}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<section class="section resources-section">
+  <div class="section-header-inline">
+    <h2 class="section-title">Aprenda+</h2>
+    <p class="section-subtitle">Conteúdo complementar em vídeo ou link</p>
+  </div>
+
+  <div class="grid grid-2">
+    {
+      resources.aprendaMais.map((item: ResourceItem) => (
+        <ResourceCard
+          title={item.title}
+          description={item.description}
+          url={item.url}
+          type={item.type}
+          available={item.available}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<section class="section resources-section">
+  <div class="section-header-inline">
+    <h2 class="section-title">Dinâmica / Atividades</h2>
+    <p class="section-subtitle">Prática e consolidação da aula</p>
+  </div>
+
+  <div class="grid grid-2">
+    {
+      resources.atividades.map((item: ResourceItem) => (
+        <ResourceCard
+          title={item.title}
+          description={item.description}
+          url={item.url}
+          type={item.type}
+          available={item.available}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<section class="section resources-section" id="referencias">
+  <div class="section-header-inline">
+    <h2 class="section-title">Referências bibliográficas</h2>
+    <p class="section-subtitle">Fontes e materiais de consulta</p>
+  </div>
+
+  <div class="grid grid-2">
+    {
+      resources.referencias.map((item: ResourceItem) => (
+        <ResourceCard
+          title={item.title}
+          description={item.description}
+          url={item.url}
+          type={item.type}
+          available={item.available}
+        />
+      ))
+    }
+  </div>
+</section>

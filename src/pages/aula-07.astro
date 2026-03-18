@@ -1,0 +1,430 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-07");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-06");
+const proximaAula = aulas.find((item) => item.slug === "aula-08");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-07"];
+---
+
+<BaseLayout
+  title="Aula 07 | Outras Soluções em Python"
+  description="Aula 07 do curso de IoT, Cloud e Indústria 4.0: ecossistema Python, automações, dados, inteligência artificial, web e aplicativos."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-python">
+            <Icon name="code" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Python</span>
+          <span class="lesson-chip">Automação</span>
+          <span class="lesson-chip">Dados</span>
+          <span class="lesson-chip">Web</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Ecossistema Python e áreas de aplicação</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Ferramentas, bibliotecas e caminhos práticos com Python</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Panorama aplicado</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Tecnologias Emergentes</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="code" />
+          </div>
+          <h3>Por que Python?</h3>
+          <p>
+            A aula apresenta Python como linguagem versátil, legível e adotada
+            em empresas como Intel, NASA, Netflix, Spotify e IBM, com uso forte
+            em IoT, finanças, web, IA e automação.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="server" />
+          </div>
+          <h3>Ambientes de desenvolvimento</h3>
+          <p>
+            O material destaca PyCharm para projetos maiores e Jupyter para
+            análise de dados, ciência de dados, machine learning e business
+            intelligence.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="chart" />
+          </div>
+          <h3>Amplitude de aplicações</h3>
+          <p>
+            Python aparece no curso como ponte entre automação, dados, APIs,
+            dashboards, IA, web e aplicativos multiplataforma.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">
+          O que o aluno deve visualizar nesta etapa
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender Python como ecossistema, e não só como linguagem.</li>
+            <li>Conhecer ambientes e ferramentas de uso profissional.</li>
+            <li>Relacionar Python com automação, web, dados e IA.</li>
+            <li>Visualizar caminhos possíveis de especialização.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Conhecer bibliotecas importantes para diferentes áreas.</li>
+            <li>Entender o papel de Jupyter em data science.</li>
+            <li>Relacionar Python com integração de APIs e webservices.</li>
+            <li>
+              Preparar base para projetos mais sofisticados nas próximas aulas.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Ambientes e instalação</h2>
+        <p class="section-subtitle">Ferramentas e contexto operacional</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>PyCharm</h3>
+          <p>
+            A aula apresenta o PyCharm como ambiente muito útil para projetos
+            grandes, com preenchimento automático, apoio ao código e
+            produtividade.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Jupyter</h3>
+          <p>
+            O Jupyter aparece como ambiente mais indicado para análise de dados,
+            machine learning, ciência de dados e business intelligence.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Python em múltiplos sistemas</h3>
+          <p>
+            O material aborda instalação e verificação do Python em Windows,
+            Linux Ubuntu/Debian e macOS, reforçando sua portabilidade.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Comunidade</h3>
+          <p>
+            A aula também menciona comunidades Python e grupos voltados a
+            frameworks e ecossistemas específicos, reforçando o aspecto
+            colaborativo da linguagem.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Áreas de aplicação com Python</h2>
+        <p class="section-subtitle">Panorama apresentado no slide</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Automações</h3>
+          <ul class="topic-list">
+            <li><strong>Selenium:</strong> automação web e formulários.</li>
+            <li>
+              <strong>BeautifulSoup:</strong> extração de informações de sites.
+            </li>
+            <li>
+              <strong>Playwright:</strong> automações e navegação assistida.
+            </li>
+            <li>
+              <strong>PyAutoGUI:</strong> automação local de mouse, teclado e tela.
+            </li>
+            <li>
+              <strong>Requests / urllib:</strong> interação com sites e APIs.
+            </li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Dados e analytics</h3>
+          <ul class="topic-list">
+            <li><strong>Pandas:</strong> manipulação e integração de dados.</li>
+            <li>
+              <strong>NumPy:</strong> desempenho em grande volume de dados.
+            </li>
+            <li>
+              <strong>Gráficos:</strong> visualização e análise exploratória.
+            </li>
+            <li>
+              <strong>Dashboards:</strong> integração com BI ou bibliotecas Python.
+            </li>
+            <li><strong>Jupyter:</strong> notebooks e fluxo analítico.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Inteligência Artificial</h3>
+          <ul class="topic-list">
+            <li>
+              <strong>Scikit-Learn:</strong> base clássica de machine learning.
+            </li>
+            <li>
+              <strong>TensorFlow / Keras:</strong> redes neurais e deep learning.
+            </li>
+            <li><strong>PyTorch:</strong> pesquisa e desenvolvimento em IA.</li>
+            <li><strong>OpenCV:</strong> visão computacional.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Web e aplicativos</h3>
+          <ul class="topic-list">
+            <li>
+              <strong>Django:</strong> framework robusto para sistemas web.
+            </li>
+            <li><strong>Flask:</strong> framework leve e flexível.</li>
+            <li><strong>FastAPI:</strong> APIs rápidas e modernas.</li>
+            <li><strong>Kivy:</strong> apps para PC e mobile.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Fluxo de uso do ecossistema Python</h2>
+        <p class="section-subtitle">Visão organizada da aula</p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="code" /></div>
+          <h3>1. Escolher o domínio</h3>
+          <p>Automação, dados, IA, web, APIs ou aplicações locais.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="server" /></div>
+          <h3>2. Definir ambiente</h3>
+          <p>PyCharm, Jupyter ou outras ferramentas adequadas ao problema.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="network" /></div>
+          <h3>3. Integrar bibliotecas</h3>
+          <p>Selecionar pacotes específicos para automação, dados ou web.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>4. Aplicar</h3>
+          <p>
+            Transformar a solução em produto, análise, automação ou serviço.
+          </p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A mensagem principal da aula é:
+        <strong
+          >Python pode ser aplicado em múltiplos domínios, desde que você
+          escolha bem o ambiente e a biblioteca certa.</strong
+        >
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Exemplo prático apresentado</h2>
+        <p class="section-subtitle">Python financeiro com Jupyter</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Mercado financeiro</h3>
+          <p>
+            A aula mostra uso de Python com dados do Ibovespa e Google,
+            reforçando coleta, manipulação, ordenação e visualização de dados.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Bibliotecas utilizadas</h3>
+          <p>
+            São citadas bibliotecas como NumPy, Pandas, Matplotlib,
+            pandas_datareader e yfinance para análise e gráficos.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Jupyter como ambiente</h3>
+          <p>
+            O notebook aparece como espaço ideal para experimentar comandos,
+            visualizar dados e construir raciocínio analítico incremental.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Aplicação de dados</h3>
+          <p>
+            Esse exemplo reforça como Python se adapta tanto a automação quanto
+            a análise quantitativa e ciência de dados.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Caminhos de especialização sugeridos</h2>
+        <p class="section-subtitle">Como organizar seu aprendizado</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Automação</h3>
+          <p>
+            Indicado para tarefas repetitivas, integração com web, APIs, coleta
+            de informações e robôs de produtividade.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Dados</h3>
+          <p>
+            Foco em análise, dashboards, ciência de dados, manipulação de
+            grandes volumes e integração com BI.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>IA e visão computacional</h3>
+          <p>
+            Área voltada a modelos de aprendizado, reconhecimento, processamento
+            inteligente e aplicações cognitivas.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Web e sistemas</h3>
+          <p>
+            Desenvolvimento de sites, APIs, backends e sistemas completos com
+            frameworks consolidados do ecossistema Python.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Escolha uma das áreas apresentadas e defina:</p>
+          <ul class="topic-list">
+            <li>qual problema você quer resolver com Python;</li>
+            <li>qual ambiente de desenvolvimento será usado;</li>
+            <li>quais bibliotecas são mais adequadas;</li>
+            <li>qual seria um primeiro projeto simples para começar;</li>
+            <li>como essa solução se conecta a IoT, dados ou automação.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

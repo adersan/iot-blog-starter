@@ -1,11 +1,158 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import Icon from "../components/Icon.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Início | IoT, Cloud e Indústria 4.0"
+  description="Portal educacional com aulas sobre IoT, middleware, Arduino, NodeMCU, Raspberry Pi, cloud e Big Data."
+>
+  <div class="container">
+    <section class="hero hero-clean">
+      <div class="hero-clean-copy">
+        <div class="hero-kicker">Portal do Curso</div>
+        <h1>IoT, Cloud e Indústria 4.0</h1>
+        <p>
+          Um ambiente organizado para acompanhar as aulas do curso, com conteúdo
+          progressivo sobre Internet das Coisas, protocolos, plataformas
+          embarcadas, integração com nuvem e fundamentos de Big Data.
+        </p>
+
+        <div class="lesson-actions">
+          <a href="/aula-01" class="button button-primary"
+            >Começar pela Aula 01</a
+          >
+          <a href="#aulas" class="button button-secondary">Ver todas as aulas</a
+          >
+        </div>
+      </div>
+
+      <div class="hero-clean-panel">
+        <div class="hero-stat-card">
+          <strong>11</strong>
+          <span>Aulas organizadas</span>
+        </div>
+
+        <div class="hero-stat-card">
+          <strong>IoT</strong>
+          <span>Cloud + prática</span>
+        </div>
+
+        <div class="hero-stat-card">
+          <strong>Python</strong>
+          <span>Aplicações e integração</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Visão geral do conteúdo</h2>
+
+      <div class="grid grid-3">
+        <article class="card feature-card-clean">
+          <div class="feature-icon">
+            <Icon name="wifi" />
+          </div>
+          <h3>Fundamentos de IoT</h3>
+          <p>
+            Conceitos, arquitetura, sensores, atuadores e comunicação entre
+            dispositivos.
+          </p>
+        </article>
+
+        <article class="card feature-card-clean">
+          <div class="feature-icon">
+            <Icon name="chip" />
+          </div>
+          <h3>Plataformas práticas</h3>
+          <p>
+            Arduino, Tinkercad, NodeMCU e Raspberry Pi aplicados a cenários
+            reais.
+          </p>
+        </article>
+
+        <article class="card feature-card-clean">
+          <div class="feature-icon">
+            <Icon name="cloud" />
+          </div>
+          <h3>Cloud e Big Data</h3>
+          <p>
+            Integração com nuvem, armazenamento, escalabilidade e análise de
+            dados.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <h2 class="section-title">Trilha de aprendizado</h2>
+
+      <div class="grid grid-2">
+        <article class="card trail-card">
+          <h3>Etapa 1 — Base conceitual</h3>
+          <p>
+            Introdução à IoT, middleware, redes e protocolos fundamentais para o
+            ecossistema.
+          </p>
+        </article>
+
+        <article class="card trail-card">
+          <h3>Etapa 2 — Experimentação</h3>
+          <p>
+            Uso de plataformas e simulações práticas com foco em entendimento
+            aplicado.
+          </p>
+        </article>
+
+        <article class="card trail-card">
+          <h3>Etapa 3 — Integração</h3>
+          <p>
+            Comunicação com cloud, fluxo de dados e arquiteturas conectadas.
+          </p>
+        </article>
+
+        <article class="card trail-card">
+          <h3>Etapa 4 — Dados e escalabilidade</h3>
+          <p>
+            Big Data, processamento e uso estratégico das informações coletadas.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="aulas">
+      <div class="section-header-inline">
+        <h2 class="section-title">Aulas disponíveis</h2>
+        <p class="section-subtitle">Navegue pelas 11 aulas do curso</p>
+      </div>
+
+      <div class="grid grid-3">
+        {
+          aulas.map((aula) => (
+            <a
+              href={`/${aula.slug}`}
+              class={`card lesson-card lesson-card-clean lesson-theme-${aula.cor}`}
+            >
+              <div class="lesson-card-topline">
+                <span class="lesson-badge">{aula.numero}</span>
+                <span class="lesson-tag">{aula.status}</span>
+              </div>
+
+              <div class="lesson-card-header lesson-card-header-clean">
+                <div class="lesson-icon lesson-icon-large">
+                  <Icon name={aula.icone} />
+                </div>
+                <h3>{aula.titulo}</h3>
+              </div>
+
+              <p>{aula.resumo}</p>
+
+              <span class="lesson-meta">Abrir aula</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

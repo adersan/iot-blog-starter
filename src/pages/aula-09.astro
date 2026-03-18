@@ -1,0 +1,492 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-09");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-08");
+const proximaAula = aulas.find((item) => item.slug === "aula-10");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-09"];
+---
+
+<BaseLayout
+  title="Aula 09 | Integração Cloud + IoT"
+  description="Aula 09 do curso de IoT, Cloud e Indústria 4.0: integração entre cloud computing e IoT, telemetria, estado do dispositivo, MQTT, HTTP e plataformas cloud."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-cloud">
+            <Icon name="cloud" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Cloud</span>
+          <span class="lesson-chip">IoT</span>
+          <span class="lesson-chip">Telemetria</span>
+          <span class="lesson-chip">MQTT</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Integração entre cloud computing e IoT</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Dados, conectividade, gerenciamento e valor de negócio</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Conceitual e aplicado</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Integração Cloud + Big Data — Parte 1</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="cloud" />
+          </div>
+          <h3>O que essa aula mostra?</h3>
+          <p>
+            Mostra como a cloud computing torna a IoT efetiva ao oferecer
+            capacidade de armazenamento, processamento e análise sob demanda.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="wifi" />
+          </div>
+          <h3>Como os dispositivos se conectam?</h3>
+          <p>
+            Dispositivos podem usar smartphones, hubs locais ou conexão direta
+            por Wi-Fi para enviar dados a servidores de computação em nuvem.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="chart" />
+          </div>
+          <h3>Por que isso importa?</h3>
+          <p>
+            Porque a integração Cloud + IoT viabiliza monitoramento, análise,
+            manutenção preditiva, rastreamento e automação em escala.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">
+          O que o aluno deve compreender nesta etapa
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender a relação entre cloud computing e IoT.</li>
+            <li>
+              Compreender o fluxo de envio de dados do dispositivo para a nuvem.
+            </li>
+            <li>Distinguir telemetria de estado do dispositivo.</li>
+            <li>Conhecer o papel do gerenciador de dispositivos.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Relacionar protocolos como MQTT e HTTP à integração cloud.</li>
+            <li>Conhecer plataformas cloud voltadas a IoT.</li>
+            <li>Perceber impactos de negócio em diferentes setores.</li>
+            <li>Preparar base para a sequência sobre Big Data.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Conceitos fundamentais</h2>
+        <p class="section-subtitle">Base teórica da integração Cloud + IoT</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>Cloud torna a IoT viável em escala</h3>
+          <p>
+            A aula destaca que a nuvem fornece a flexibilidade, a mobilidade e
+            os recursos sob demanda necessários para a IoT funcionar de forma
+            efetiva.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Dispositivos conectados</h3>
+          <p>
+            Sensores e dispositivos inteligentes coletam dados do ambiente e os
+            enviam para serviços cloud, onde as informações são agregadas e
+            analisadas.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Telemetria</h3>
+          <p>
+            A telemetria corresponde aos dados de eventos enviados do
+            dispositivo para a nuvem, como medições ambientais ou sinais
+            operacionais.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Estado do dispositivo</h3>
+          <p>
+            O estado do dispositivo é um conjunto de dados que descreve sua
+            condição atual, podendo ser estruturado ou não, e fluindo do
+            dispositivo para a nuvem.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Gerenciamento e protocolos</h2>
+        <p class="section-subtitle">Pontos centrais apresentados no material</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Gerenciador de dispositivos</h3>
+          <p>
+            É o serviço responsável por monitorar a integridade e a atividade
+            dos dispositivos, atualizar configurações, credenciais e
+            autenticação.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>MQTT</h3>
+          <p>
+            O material destaca MQTT como protocolo padrão do setor IoT, no
+            modelo publicação/inscrição (pub/sub), muito adequado para
+            comunicação leve.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>HTTP</h3>
+          <p>
+            Também aparece como protocolo de conexão com provedores cloud, ao
+            lado do MQTT, especialmente em integrações por APIs e serviços web.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Cloud IoT Core</h3>
+          <p>
+            A aula menciona componentes como gerenciador de dispositivos e
+            pontes de protocolos, usados para registrar, monitorar e conectar
+            dispositivos ao provedor cloud.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Fluxo lógico da integração</h2>
+        <p class="section-subtitle">Como a aula organiza a arquitetura</p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chip" /></div>
+          <h3>1. Dispositivo</h3>
+          <p>Placa ou sensor coleta dados físicos do ambiente.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="wifi" /></div>
+          <h3>2. Conexão</h3>
+          <p>
+            Os dados seguem por Wi-Fi, hub local ou outro meio de acesso à
+            internet.
+          </p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="cloud" /></div>
+          <h3>3. Nuvem</h3>
+          <p>
+            Os dados são armazenados, processados e analisados em datacenters
+            cloud.
+          </p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>4. Resultado</h3>
+          <p>
+            Aplicações e navegadores acessam insights, alertas e estado dos
+            dispositivos.
+          </p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A lógica central da aula é:
+        <strong>coletar → transmitir → armazenar → analisar → agir</strong>.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Relação entre IoT e cloud computing</h2>
+        <p class="section-subtitle">Benefícios destacados no slide</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Escalabilidade</h3>
+          <p>
+            Grandes quantidades de dados geradas por sensores exigem poder de
+            armazenamento e processamento que a nuvem oferece com elasticidade.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Redução de custo</h3>
+          <p>
+            Em vez de manter toda a infraestrutura internamente, a empresa
+            utiliza recursos dos provedores cloud sob demanda.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Segurança e confiabilidade</h3>
+          <p>
+            O material destaca ganhos ligados a confiabilidade, disponibilidade
+            e integridade da informação em estruturas cloud.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Análise avançada</h3>
+          <p>
+            Soluções de Big Data dos provedores podem ser usadas para tratar
+            telemetria e gerar insights mais sofisticados.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Plataformas cloud citadas</h2>
+        <p class="section-subtitle">Exemplos apresentados no material</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Google Cloud</h3>
+          <p>
+            A aula cita a plataforma de IoT do Google Cloud como recurso para
+            prever manutenção, otimizar desempenho, detectar anomalias e
+            rastrear estado e localização.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Azure IoT</h3>
+          <p>
+            A plataforma IoT do Azure é apresentada como conjunto de serviços de
+            nuvem, componentes de borda e SDKs para conectar, monitorar e
+            controlar ativos em escala.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>AWS IoT</h3>
+          <p>
+            A AWS aparece como provedora de serviços e soluções para conectar,
+            gerenciar bilhões de dispositivos e analisar workloads industriais e
+            comerciais.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Datadog + Azure IoT Hub</h3>
+          <p>
+            O material ainda cita monitoramento com métricas de integridade do
+            dispositivo, incluindo CPU, memória, disco e rede.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Impactos Cloud + IoT nos negócios</h2>
+        <p class="section-subtitle">Valor empresarial apresentado na aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Melhor atendimento e visibilidade</h3>
+          <p>
+            A conectividade permite acompanhar processos, pedidos e fluxos de
+            serviço com mais rastreabilidade ponta a ponta.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Maior engajamento com o cliente</h3>
+          <p>
+            Dispositivos conectados geram comunicação e recomendações mais
+            personalizadas, fortalecendo a relação entre empresa e consumidor.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Poder analítico ampliado</h3>
+          <p>
+            Os negócios captam mais dados, identificam padrões e geram insights
+            para melhorar decisões e produtos.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Facilidade para inovação</h3>
+          <p>
+            A alta conectividade permite novas combinações entre processos,
+            produtos e serviços, aumentando o potencial de geração de valor.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Setores de aplicação</h2>
+        <p class="section-subtitle">Exemplos de negócio citados no slide</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Manufatura</h3>
+          <p>
+            Melhorar qualidade dos produtos, compreender a cadeia de suprimentos
+            e manter fluxo contínuo de dados para otimizar fabricação.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Varejo</h3>
+          <p>
+            Aumentar eficiência operacional e operação da loja em tempo real com
+            base em dados conectados.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Utilities</h3>
+          <p>
+            Conectar e controlar turbinas, usinas, hidrômetros e redes,
+            estabelecendo fluxo contínuo de dados operacionais.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Telecom, transporte e logística</h3>
+          <p>
+            Expandir portfólio de serviços IoT, proteger carga, otimizar frotas,
+            ampliar escala e aumentar segurança operacional.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Escolha um cenário IoT e defina:</p>
+          <ul class="topic-list">
+            <li>quais dados de telemetria seriam enviados;</li>
+            <li>qual estado do dispositivo seria monitorado;</li>
+            <li>qual protocolo seria usado (MQTT ou HTTP);</li>
+            <li>qual provedor cloud receberia os dados;</li>
+            <li>qual ganho de negócio a integração geraria.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

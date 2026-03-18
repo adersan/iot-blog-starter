@@ -1,0 +1,356 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-04");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-03");
+const proximaAula = aulas.find((item) => item.slug === "aula-05");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-04"];
+---
+
+<BaseLayout
+  title="Aula 04 | Arduino Tinkercad — Prática"
+  description="Aula 04 do curso de IoT, Cloud e Indústria 4.0: prática com Arduino e Tinkercad, monitor serial, Blink, múltiplos LEDs, relé e display LCD."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-arduino">
+            <Icon name="wrench" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Tinkercad</span>
+          <span class="lesson-chip">Prática</span>
+          <span class="lesson-chip">Circuitos</span>
+          <span class="lesson-chip">Arduino Uno R3</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Prática com Arduino e Tinkercad</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Montagem, simulação e validação de circuitos</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Aplicação prática</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Plataforma NodeMCU</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="wrench" />
+          </div>
+          <h3>O que esta aula faz?</h3>
+          <p>
+            Transforma a teoria da aula anterior em prática, usando o Tinkercad
+            para criar e simular circuitos e validar o comportamento do código.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="chip" />
+          </div>
+          <h3>Por que praticar assim?</h3>
+          <p>
+            A simulação acelera a aprendizagem, reduz custo com hardware inicial
+            e ajuda a testar lógica, montagem e comportamento antes de ir para a
+            placa real.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="code" />
+          </div>
+          <h3>Qual a lógica da aula?</h3>
+          <p>
+            Montar circuitos, programar no Arduino, simular no Tinkercad e
+            evoluir progressivamente da saída simples até estruturas mais
+            completas.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">Competências práticas esperadas</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Criar um novo circuito no Tinkercad.</li>
+            <li>Adicionar o Arduino Uno R3 ao projeto.</li>
+            <li>Alternar para programação em texto.</li>
+            <li>Executar testes simples de saída digital e monitor serial.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Construir circuitos com LEDs, relé e display LCD.</li>
+            <li>
+              Aplicar <code>setup()</code> e <code>loop()</code> em problemas práticos.
+            </li>
+            <li>Melhorar código repetitivo com estrutura <code>for</code>.</li>
+            <li>Consolidar raciocínio lógico para projetos embarcados.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Fluxo da prática no Tinkercad</h2>
+        <p class="section-subtitle">
+          Sequência operacional apresentada na aula
+        </p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chip" /></div>
+          <h3>1. Criar circuito</h3>
+          <p>Novo projeto em circuits com Arduino Uno R3.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="code" /></div>
+          <h3>2. Escrever código</h3>
+          <p>
+            Programação em texto com lógica de setup, loop e controle de pinos.
+          </p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="wifi" /></div>
+          <h3>3. Simular</h3>
+          <p>Executar o circuito virtualmente e observar comportamento.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>4. Refinar</h3>
+          <p>Corrigir montagem, otimizar código e ampliar o projeto.</p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A lógica da aula prática é:
+        <strong>montar → programar → simular → corrigir → evoluir</strong>.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Exercícios práticos trabalhados</h2>
+        <p class="section-subtitle">Atividades centrais da aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>Hello World no monitor serial</h3>
+          <p>
+            Exercício inicial usando <code>Serial.begin(9600)</code> e
+            <code>Serial.print()</code> para validar comunicação serial e baud rate.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Blink em pino específico</h3>
+          <p>
+            O LED é acionado em intervalo regular, reforçando controle de pino
+            digital, temporização com <code>delay()</code> e lógica de saída.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Piscar 4 LEDs</h3>
+          <p>
+            Projeto sequencial com múltiplos pinos digitais, mostrando expansão
+            de lógica e repetição de instruções.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Lâmpada com relé</h3>
+          <p>
+            Exemplo de controle de carga usando relé SPDT, bateria, GND e pino
+            digital, aproximando a prática de um cenário real de automação.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Projeto com display LCD</h2>
+        <p class="section-subtitle">Interação visual e contador</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Display LCD I2C</h3>
+          <p>
+            A aula apresenta o uso da biblioteca <code
+              >Adafruit_LiquidCrystal</code
+            >, com inicialização do display e escrita de texto.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Contador incremental</h3>
+          <p>
+            O valor é exibido em sequência, com atualização no LCD e controle de
+            tempo, simulando um contador de segundos.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Backlight</h3>
+          <p>
+            O projeto também trabalha acendimento e desligamento do backlight do
+            LCD, reforçando controle de interface visual.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Aplicação didática</h3>
+          <p>
+            O LCD ajuda a entender saída visual, atualização de estado e
+            organização do programa em problemas um pouco mais ricos.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Otimização de código</h2>
+        <p class="section-subtitle">Evolução da lógica de programação</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Redução de repetição</h3>
+          <p>
+            Ao invés de repetir manualmente as mesmas instruções para cada LED,
+            a aula propõe refatorar a lógica com estruturas de repetição.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Uso de <code>for</code></h3>
+          <p>
+            O objetivo é aplicar a estrutura <code>for</code> no projeto com múltiplos
+            LEDs, tornando o código mais limpo, curto e reutilizável.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Escalabilidade</h3>
+          <p>
+            Esse raciocínio prepara o aluno para construir programas embarcados
+            maiores e mais organizados.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Raciocínio computacional</h3>
+          <p>
+            A prática não é apenas montar circuito: é também aprender a modelar
+            o problema em lógica de programação.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Estruture um plano de execução para os seguintes projetos:</p>
+          <ul class="topic-list">
+            <li>Hello World no monitor serial;</li>
+            <li>Blink em pino 12;</li>
+            <li>piscar 4 LEDs;</li>
+            <li>acionar uma lâmpada com relé;</li>
+            <li>contador em display LCD;</li>
+            <li>refatoração do projeto com <code>for</code>.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

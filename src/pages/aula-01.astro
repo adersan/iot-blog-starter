@@ -1,0 +1,355 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-01");
+const proximaAula = aulas.find((item) => item.slug === "aula-02");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-01"];
+---
+
+<BaseLayout
+  title="Aula 01 | Conceitos de IoT"
+  description="Aula 01 do curso de IoT, Cloud e Indústria 4.0: conceitos fundamentais de Internet das Coisas, arquitetura, sensores, atuadores, aplicações e desafios."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-iot">
+            <Icon name="wifi" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Fundamentos</span>
+          <span class="lesson-chip">Arquitetura</span>
+          <span class="lesson-chip">Sensores e Atuadores</span>
+          <span class="lesson-chip">Aplicações</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Fundamentos da Internet das Coisas</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Base conceitual para as próximas aulas</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Introdução</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Middleware e Protocolos de Rede</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="wifi" />
+          </div>
+          <h3>O que é IoT?</h3>
+          <p>
+            Internet das Coisas é o conceito de conectar objetos físicos à rede,
+            permitindo coleta, transmissão, processamento e uso inteligente de
+            dados.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="chip" />
+          </div>
+          <h3>Elementos centrais</h3>
+          <p>
+            Sensores, atuadores, dispositivos embarcados, conectividade e
+            software formam a base de uma solução IoT.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="cloud" />
+          </div>
+          <h3>Por que isso importa?</h3>
+          <p>
+            IoT permite automação, monitoramento em tempo real, tomada de
+            decisão baseada em dados e integração com cloud e analytics.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">O que o aluno deve compreender ao final</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender o conceito de Internet das Coisas.</li>
+            <li>Identificar sensores, atuadores e dispositivos conectados.</li>
+            <li>Compreender o fluxo básico de dados em uma solução IoT.</li>
+            <li>Reconhecer aplicações práticas em diferentes setores.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Visualizar a arquitetura em camadas de um sistema IoT.</li>
+            <li>Perceber os principais desafios técnicos e operacionais.</li>
+            <li>
+              Preparar a base conceitual para middleware, protocolos e cloud.
+            </li>
+            <li>Relacionar IoT com Indústria 4.0 e transformação digital.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Conceitos fundamentais</h2>
+        <p class="section-subtitle">Base teórica da Internet das Coisas</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>Objeto conectado</h3>
+          <p>
+            É qualquer elemento físico capaz de coletar, enviar, receber ou
+            reagir a dados por meio de uma rede. Pode ser um sensor de
+            temperatura, uma lâmpada inteligente, uma máquina industrial ou um
+            wearable.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Sensores</h3>
+          <p>
+            São responsáveis por captar informações do ambiente, como
+            temperatura, umidade, presença, luminosidade, vibração, pressão ou
+            localização.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Atuadores</h3>
+          <p>
+            Executam ações a partir de comandos recebidos, como ligar motores,
+            abrir válvulas, acender luzes, emitir alarmes ou controlar
+            mecanismos.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Conectividade</h3>
+          <p>
+            Permite a comunicação entre os dispositivos e os sistemas de
+            processamento, usando tecnologias como Wi-Fi, Bluetooth, redes
+            móveis e outros meios de transmissão.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Arquitetura básica de IoT</h2>
+        <p class="section-subtitle">
+          Fluxo lógico entre coleta, comunicação e uso dos dados
+        </p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chip" /></div>
+          <h3>1. Dispositivos</h3>
+          <p>Sensores e atuadores interagem com o ambiente físico.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="network" /></div>
+          <h3>2. Rede</h3>
+          <p>
+            Os dados são transmitidos por uma infraestrutura de comunicação.
+          </p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="cloud" /></div>
+          <h3>3. Processamento</h3>
+          <p>As informações podem ser tratadas localmente ou em nuvem.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>4. Decisão</h3>
+          <p>
+            Os dados geram automação, alertas, análises e ações inteligentes.
+          </p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        Em termos didáticos, a lógica principal da IoT é:
+        <strong>coletar → transmitir → processar → agir</strong>.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Aplicações reais de IoT</h2>
+        <p class="section-subtitle">Onde esses conceitos aparecem na prática</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Indústria 4.0</h3>
+          <p>
+            Monitoramento de máquinas, manutenção preditiva, sensores em linhas
+            de produção e coleta contínua de dados operacionais.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Cidades inteligentes</h3>
+          <p>
+            Controle de iluminação pública, monitoramento de tráfego, gestão de
+            resíduos, sensores ambientais e segurança urbana conectada.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Saúde</h3>
+          <p>
+            Wearables, monitoramento remoto de pacientes, dispositivos médicos
+            conectados e acompanhamento contínuo de indicadores.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Agronegócio</h3>
+          <p>
+            Sensores de solo, controle de irrigação, monitoramento climático e
+            automação de processos agrícolas.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Principais desafios</h2>
+        <p class="section-subtitle">Pontos críticos em soluções IoT</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Segurança</h3>
+          <p>
+            Dispositivos conectados ampliam a superfície de ataque e exigem
+            proteção de acesso, comunicação e integridade dos dados.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Privacidade</h3>
+          <p>
+            A coleta contínua de dados exige cuidado com uso, armazenamento e
+            tratamento das informações sensíveis.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Escalabilidade</h3>
+          <p>
+            À medida que o número de dispositivos cresce, a infraestrutura
+            precisa suportar mais volume de dados e comunicação.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Interoperabilidade</h3>
+          <p>
+            Equipamentos, plataformas e protocolos diferentes precisam conversar
+            entre si de forma confiável e padronizada.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>
+            Escolha um ambiente real do seu cotidiano ou do setor industrial e
+            identifique:
+          </p>
+          <ul class="topic-list">
+            <li>quais dados poderiam ser coletados;</li>
+            <li>quais sensores seriam usados;</li>
+            <li>qual ação automática poderia ser executada;</li>
+            <li>qual benefício essa automação traria.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        <a href="/" class="button button-secondary">← Voltar para início</a>
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

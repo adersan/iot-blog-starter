@@ -1,0 +1,428 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-11");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-10");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-11"];
+---
+
+<BaseLayout
+  title="Aula 11 | Integração Cloud + Big Data — Parte 2"
+  description="Aula 11 do curso de IoT, Cloud e Indústria 4.0: ETL, limpeza de dados, análise exploratória, modelagem, treino/teste, IA e previsões com Python."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-dados">
+            <Icon name="chart" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">ETL</span>
+          <span class="lesson-chip">Análise Exploratória</span>
+          <span class="lesson-chip">Modelagem</span>
+          <span class="lesson-chip">Previsões</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Pipeline analítico com Python e Big Data</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Tratamento, modelagem, avaliação e previsão</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Aplicação prática orientada a dados</span>
+          </li>
+          <li>
+            <strong>Aula anterior:</strong>
+            <span>Integração Cloud + Big Data — Parte 1</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="database" />
+          </div>
+          <h3>O que esta aula entrega?</h3>
+          <p>
+            A aula mostra o fluxo prático de ciência de dados em Python, saindo
+            da leitura do dataset até a geração de previsões.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="code" />
+          </div>
+          <h3>Ambiente sugerido</h3>
+          <p>
+            O material usa Google Colab e Jupyter como ambiente didático, com
+            bibliotecas como Pandas, NumPy, Matplotlib, Seaborn e Scikit-Learn.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="spark" />
+          </div>
+          <h3>Qual a lógica da aula?</h3>
+          <p>
+            Entender o problema, preparar dados, analisar relações, treinar
+            modelos, comparar desempenho e gerar previsões futuras.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">
+          O que o aluno deve consolidar nesta etapa
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender as etapas do pipeline de ciência de dados.</li>
+            <li>Executar ETL e tratamento inicial do dataset.</li>
+            <li>Fazer análise exploratória e correlação entre variáveis.</li>
+            <li>Preparar dados para aprendizado de máquina.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Separar bases de treino e teste adequadamente.</li>
+            <li>Treinar mais de um modelo para comparação.</li>
+            <li>Avaliar desempenho com métrica objetiva.</li>
+            <li>Gerar previsões sobre novos dados.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Pipeline da ciência de dados</h2>
+        <p class="section-subtitle">Sequência explícita do slide</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>1. Entender o problema</h3>
+          <p>
+            Antes da técnica, a aula reforça a necessidade de entender a missão,
+            o domínio do problema e o objetivo analítico.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>2. ETL</h3>
+          <p>
+            Os dados precisam ser extraídos e carregados para o ambiente de
+            trabalho, normalmente com Pandas e leitura de CSVs ou outras fontes.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>3. Ajuste de dados</h3>
+          <p>
+            A preparação inclui limpeza, inspeção do dataset, verificação de
+            tipos, contagem, estatística descritiva e tratamento inicial.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>4. Análise exploratória</h3>
+          <p>
+            A etapa exploratória busca correlação entre variáveis, padrões
+            estatísticos e entendimento do comportamento dos dados.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Bibliotecas e ambiente</h2>
+        <p class="section-subtitle">Ferramentas destacadas na aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Google Colab / Jupyter</h3>
+          <p>
+            O slide usa Google Colab e Jupyter Notebook como ambiente principal
+            para rodar os exemplos de análise e modelagem.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Pandas / NumPy / OpenPyXL</h3>
+          <p>
+            O tratamento de dados é estruturado com Pandas e NumPy, com OpenPyXL
+            citado no conjunto de bibliotecas de apoio.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Matplotlib e Seaborn</h3>
+          <p>
+            O material usa gráficos e heatmap para apoiar análise exploratória e
+            visualização de correlação.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>TensorFlow</h3>
+          <p>
+            É citado como tecnologia de machine learning no ecossistema da aula,
+            ainda que os exemplos centrais usem Scikit-Learn.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Fluxo lógico do processo analítico</h2>
+        <p class="section-subtitle">Como organizar o raciocínio da aula</p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="database" /></div>
+          <h3>1. Ler dados</h3>
+          <p>Importar o dataset e inspecionar sua estrutura inicial.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>2. Explorar</h3>
+          <p>Descobrir correlações, padrões e estatísticas relevantes.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="spark" /></div>
+          <h3>3. Modelar</h3>
+          <p>Treinar algoritmos com variáveis X e alvo Y.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="cloud" /></div>
+          <h3>4. Prever</h3>
+          <p>Comparar modelos, interpretar resultados e estimar o futuro.</p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A lógica central da aula é:
+        <strong>entender → preparar → analisar → modelar → prever</strong>.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Etapas práticas mostradas no código</h2>
+        <p class="section-subtitle">Pipeline aplicado em Python</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>ETL</h3>
+          <p>
+            O material mostra leitura de CSV com <code>pd.read_csv()</code>,
+            carregamento de entidade e visualização inicial do dataset.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Ajuste de dados</h3>
+          <p>
+            São usados métodos como <code>info()</code>, <code>head()</code>,
+            <code>tail()</code>, <code>describe()</code>, <code>dtypes</code>,
+            <code>count()</code> e <code>value_counts()</code>.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Análise exploratória</h3>
+          <p>
+            O slide mostra cálculo de correlação, filtragem por atributo e
+            geração de heatmap com Seaborn para leitura visual.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Preparação X e Y</h3>
+          <p>
+            A variável-alvo Y é separada das características X para permitir
+            aprendizado supervisionado e previsão de valores.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Modelagem e treino/teste</h2>
+        <p class="section-subtitle">Parte central do processo de IA</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Treino e teste</h3>
+          <p>
+            O material reforça divisões como 70/30, 60/40 e 80/20, alertando
+            para o risco de overfitting quando se usa 100% treino.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3><code>train_test_split</code></h3>
+          <p>
+            A divisão da base é apresentada com <code>train_test_split</code>
+            para separar dados de treino e teste de forma didática.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Modelos usados</h3>
+          <p>
+            O slide trabalha com <code>LinearRegression</code> e
+            <code>RandomForestRegressor</code> como exemplos de modelos comparáveis.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Treinamento</h3>
+          <p>
+            A etapa seguinte é ajustar os modelos aos dados de treino com <code
+              >fit()</code
+            > antes da avaliação.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Avaliação e previsões</h2>
+        <p class="section-subtitle">
+          Interpretação de resultados apresentada na aula
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Métrica R²</h3>
+          <p>
+            A comparação entre modelos é feita com <code>r2_score</code>, usada
+            para escolher o melhor desempenho entre os algoritmos treinados.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Comparação de previsões</h3>
+          <p>
+            O material monta uma entidade auxiliar contendo <code>y_teste</code
+            >, previsão por árvore de decisão e regressão linear para
+            comparação.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Visualização gráfica</h3>
+          <p>
+            A linha comparativa é plotada para ajudar a interpretar o
+            comportamento dos modelos frente aos dados reais.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Nova base para previsão</h3>
+          <p>
+            A etapa final usa uma nova base de dados, sem a coluna Y, para gerar
+            previsões sobre registros ainda não observados.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Escolha um dataset e organize o seguinte pipeline:</p>
+          <ul class="topic-list">
+            <li>ETL e leitura da base;</li>
+            <li>limpeza e ajuste do dataset;</li>
+            <li>análise exploratória e correlação;</li>
+            <li>definição de X e Y;</li>
+            <li>divisão treino/teste;</li>
+            <li>treino de ao menos dois modelos;</li>
+            <li>comparação dos resultados e geração de previsões.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,101 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  url?: string;
+  type?: string;
+  available?: boolean;
+}
+
+const {
+  title = "Recurso",
+  description = "Conteúdo complementar desta aula.",
+  url = "",
+  type = "link",
+  available = false,
+} = Astro.props as Props;
+
+const normalizedType =
+  type === "video" || type === "pdf" || type === "link" ? type : "link";
+
+const isLocalAnchor = url.startsWith("#");
+
+function getYoutubeId(link: string): string {
+  if (!link) return "";
+
+  const match =
+    link.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/) ||
+    link.match(/youtube\.com\/embed\/([^&?/]+)/);
+
+  return match ? match[1] : "";
+}
+
+const youtubeId = getYoutubeId(url);
+const thumbnail = youtubeId
+  ? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
+  : "";
+---
+
+<article class={`resource-card ${available ? "is-available" : "is-empty"}`}>
+  {
+    normalizedType === "video" && available && thumbnail ? (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-card-link"
+      >
+        <div class="resource-thumb">
+          <img src={thumbnail} alt={`Miniatura de ${title}`} loading="lazy" />
+          <span class="resource-badge">Vídeo</span>
+        </div>
+
+        <div class="resource-body">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <span class="resource-action">Abrir recurso</span>
+        </div>
+      </a>
+    ) : available ? (
+      isLocalAnchor ? (
+        <a href={url} class="resource-card-link">
+          <div class="resource-body">
+            <span class="resource-badge">
+              {normalizedType === "pdf" ? "PDF" : "Texto"}
+            </span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <span class="resource-action">Ver referência</span>
+          </div>
+        </a>
+      ) : (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="resource-card-link"
+        >
+          <div class="resource-body">
+            <span class="resource-badge">
+              {normalizedType === "pdf" ? "PDF" : "Link"}
+            </span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <span class="resource-action">Abrir recurso</span>
+          </div>
+        </a>
+      )
+    ) : (
+      <div class="resource-card-link">
+        <div class="resource-body">
+          <span class="resource-badge resource-badge-muted">Em breve</span>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <span class="resource-action resource-action-muted">
+            Espaço reservado para conteúdo futuro
+          </span>
+        </div>
+      </div>
+    )
+  }
+</article>

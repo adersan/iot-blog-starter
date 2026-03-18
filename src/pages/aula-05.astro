@@ -1,0 +1,351 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-05");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-04");
+const proximaAula = aulas.find((item) => item.slug === "aula-06");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-05"];
+---
+
+<BaseLayout
+  title="Aula 05 | Plataforma NodeMCU"
+  description="Aula 05 do curso de IoT, Cloud e Indústria 4.0: plataforma NodeMCU, ESP8266, conectividade Wi-Fi e integração com serviços em nuvem."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-cloud">
+            <Icon name="radio" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">NodeMCU</span>
+          <span class="lesson-chip">ESP8266</span>
+          <span class="lesson-chip">Wi-Fi</span>
+          <span class="lesson-chip">Cloud</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>NodeMCU e conectividade para IoT</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Projetos conectados com ESP8266 e integração com nuvem</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Introdução prática com conectividade</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Plataforma Raspberry Pi</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="radio" />
+          </div>
+          <h3>O que é NodeMCU?</h3>
+          <p>
+            NodeMCU é uma plataforma baseada no ESP8266 que combina
+            microcontrolador, conectividade Wi-Fi e ambiente de desenvolvimento
+            acessível para projetos IoT.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="wifi" />
+          </div>
+          <h3>Por que ele é importante?</h3>
+          <p>
+            Diferente de uma placa puramente local, o NodeMCU já nasce com foco
+            em comunicação com redes sem fio e integração com serviços online.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="cloud" />
+          </div>
+          <h3>Onde ele se encaixa em IoT?</h3>
+          <p>
+            É uma excelente opção para automação, telemetria, sensores
+            conectados e envio de dados para plataformas cloud.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">O que o aluno deve dominar nesta etapa</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender o papel do NodeMCU em projetos IoT.</li>
+            <li>Conhecer o ESP8266 como base de conectividade Wi-Fi.</li>
+            <li>Relacionar NodeMCU com automação e sensores conectados.</li>
+            <li>Visualizar sua aplicação em projetos com internet.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Compreender a lógica de integração com plataformas cloud.</li>
+            <li>
+              Identificar possibilidades de uso com ThingSpeak e similares.
+            </li>
+            <li>Preparar base para projetos distribuídos e telemetria.</li>
+            <li>Conectar hardware, rede e monitoramento de dados.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Conceitos fundamentais</h2>
+        <p class="section-subtitle">Base teórica sobre NodeMCU e ESP8266</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>ESP8266</h3>
+          <p>
+            É o chip central da plataforma, responsável por permitir comunicação
+            Wi-Fi e execução de aplicações embarcadas com foco em conectividade.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>NodeMCU</h3>
+          <p>
+            É a placa e ecossistema de desenvolvimento que facilita o uso do
+            ESP8266, oferecendo pinos, alimentação e integração com IDEs e
+            bibliotecas.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Conectividade sem fio</h3>
+          <p>
+            O grande diferencial é a capacidade de conectar o hardware
+            diretamente a redes Wi-Fi, permitindo monitoramento e controle
+            remoto.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>IoT conectada</h3>
+          <p>
+            O NodeMCU é ideal para aplicações em que o dispositivo não apenas lê
+            ou aciona componentes, mas também envia e recebe dados via internet.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Arquitetura prática de uso</h2>
+        <p class="section-subtitle">Fluxo lógico em projetos com NodeMCU</p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chip" /></div>
+          <h3>1. Sensores / Entradas</h3>
+          <p>O NodeMCU lê dados de sensores ou estados do ambiente.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="wifi" /></div>
+          <h3>2. Rede Wi-Fi</h3>
+          <p>Os dados são enviados para a rede sem fio local.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="cloud" /></div>
+          <h3>3. Plataforma cloud</h3>
+          <p>As informações podem ser registradas e monitoradas online.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>4. Visualização / Decisão</h3>
+          <p>Os dados apoiam monitoramento, alertas e automação.</p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A lógica principal desta aula é:
+        <strong>captar → conectar → transmitir → monitorar</strong>.
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Aplicações práticas</h2>
+        <p class="section-subtitle">Onde o NodeMCU se destaca</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Automação residencial</h3>
+          <p>
+            Acionamento remoto de cargas, iluminação, sensores de presença,
+            temperatura e comandos por internet.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Telemetria</h3>
+          <p>
+            Coleta e envio contínuo de dados de sensores para dashboards e
+            plataformas online.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Monitoramento remoto</h3>
+          <p>
+            Acompanhamento de variáveis ambientais, industriais ou domésticas
+            por meio de conexão Wi-Fi.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Integração com cloud</h3>
+          <p>
+            Uso com plataformas como ThingSpeak para armazenar, visualizar e
+            analisar dados.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Plataformas e ambiente de desenvolvimento</h2>
+        <p class="section-subtitle">Ferramentas associadas à aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Arduino IDE</h3>
+          <p>
+            A placa NodeMCU pode ser programada pela Arduino IDE após
+            configuração adequada do suporte à família ESP8266.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>ThingSpeak</h3>
+          <p>
+            Plataforma cloud frequentemente usada em aulas introdutórias para
+            publicar e visualizar dados enviados pelo dispositivo.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Integração com sensores</h3>
+          <p>
+            O NodeMCU pode atuar como ponte entre sensores físicos e serviços
+            online, permitindo soluções conectadas de forma simples.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Projetos conectados</h3>
+          <p>
+            A aula prepara o aluno para enxergar o hardware não só como
+            controlador local, mas como nó de uma rede IoT real.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Estruture um projeto conceitual com NodeMCU definindo:</p>
+          <ul class="topic-list">
+            <li>qual sensor ou dado será coletado;</li>
+            <li>como o dispositivo se conectará ao Wi-Fi;</li>
+            <li>qual plataforma cloud receberá os dados;</li>
+            <li>como esses dados serão visualizados ou usados;</li>
+            <li>qual benefício prático o projeto entregará.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

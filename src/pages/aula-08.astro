@@ -1,0 +1,489 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-08");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-07");
+const proximaAula = aulas.find((item) => item.slug === "aula-09");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-08"];
+---
+
+<BaseLayout
+  title="Aula 08 | Tecnologias Emergentes"
+  description="Aula 08 do curso de IoT, Cloud e Indústria 4.0: tecnologias emergentes, princípios da Indústria 4.0, IA, simulação, XR, 5G e transformação digital."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-dados">
+            <Icon name="spark" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Indústria 4.0</span>
+          <span class="lesson-chip">IA</span>
+          <span class="lesson-chip">Simulação</span>
+          <span class="lesson-chip">Transformação Digital</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Tecnologias emergentes e inovação industrial</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span
+              >Transformação digital, tendências e aplicações estratégicas</span
+            >
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Panorama conceitual e aplicado</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Integração Cloud + IoT</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="spark" />
+          </div>
+          <h3>O que são tecnologias emergentes?</h3>
+          <p>
+            A aula trata tecnologias emergentes como inovações com alto
+            potencial de transformar negócios, processos e a própria forma como
+            interagimos com o mundo.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="cloud" />
+          </div>
+          <h3>Por que isso importa?</h3>
+          <p>
+            Essas tecnologias são a base da Indústria 4.0 e da transformação
+            digital, alterando produtividade, personalização, tomada de decisão
+            e novos modelos de negócio.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="chart" />
+          </div>
+          <h3>Qual a lógica da aula?</h3>
+          <p>
+            Entender princípios, vantagens, desafios e principais tecnologias
+            que estruturam o cenário industrial e digital contemporâneo.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">
+          O que o aluno deve compreender nesta etapa
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender o conceito de tecnologia emergente.</li>
+            <li>Relacionar tecnologias emergentes com Indústria 4.0.</li>
+            <li>
+              Conhecer princípios fundamentais da transformação industrial
+              digital.
+            </li>
+            <li>Perceber impactos estratégicos nos processos produtivos.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>
+              Identificar vantagens e barreiras na adoção dessas tecnologias.
+            </li>
+            <li>
+              Conhecer exemplos como IA, XR, simulação, 5G, smart cities e
+              drones.
+            </li>
+            <li>Relacionar inovação com valor de negócio.</li>
+            <li>
+              Preparar base conceitual para integração cloud e análise de dados.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Conceitos fundamentais</h2>
+        <p class="section-subtitle">Base teórica da aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>Tecnologia emergente</h3>
+          <p>
+            A aula define tecnologia emergente como uma inovação com grande
+            potencial de modificar negócios, sociedade e experiências humanas,
+            indo além de uma simples melhoria incremental.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Indústria 4.0</h3>
+          <p>
+            É apresentada como um cenário em que máquinas, software, dados e
+            redes trabalham integrados por tecnologias de informação e
+            comunicação.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>CPPS</h3>
+          <p>
+            Os sistemas de produção ciber-físicos aparecem como base da nova
+            manufatura, conectando ambiente físico e processamento digital.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Transformação digital</h3>
+          <p>
+            O foco não é apenas instalar tecnologia, mas repensar processos,
+            eficiência, experiência do usuário e valor de negócio.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Princípios da Indústria 4.0</h2>
+        <p class="section-subtitle">Eixos apresentados no material</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Interoperabilidade</h3>
+          <p>
+            Dispositivos, sistemas e pessoas precisam se comunicar de forma
+            integrada para que a virtualização e a automação aconteçam com
+            coerência.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Tempo real</h3>
+          <p>
+            A operação precisa responder a eventos e previsões em tempo real,
+            apoiando decisões rápidas e contextualizadas.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Descentralização</h3>
+          <p>
+            A tomada de decisão é distribuída, dando maior autonomia ao sistema
+            e mais flexibilidade para responder a falhas e mudanças.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Modularidade e serviços</h3>
+          <p>
+            A estrutura precisa se adaptar rapidamente e compor operações e
+            produtos como serviços orientados às necessidades específicas do
+            cliente.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Vantagens e dificuldades</h2>
+        <p class="section-subtitle">Benefícios e barreiras da adoção</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Vantagens</h3>
+          <ul class="topic-list">
+            <li>Flexibilidade e dinamismo.</li>
+            <li>Maior produtividade.</li>
+            <li>Menores custos de produção.</li>
+            <li>Melhoria de qualidade e confiabilidade.</li>
+            <li>Sustentabilidade e melhores condições de trabalho.</li>
+            <li>Customização, agilidade e inovação.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Dificuldades</h3>
+          <ul class="topic-list">
+            <li>Falta de conhecimento e skills internos.</li>
+            <li>
+              Foco excessivo na tecnologia, e não no valor para o negócio.
+            </li>
+            <li>Custos elevados de implantação e escalabilidade.</li>
+            <li>Necessidade de visão de MVP, ROI e construção gradual.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Tecnologias emergentes destacadas</h2>
+        <p class="section-subtitle">Mapa das tendências citadas na aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Dados e analytics</h3>
+          <p>
+            Big Data, analytics, Hadoop, MapReduce e BigTable são apresentados
+            como bases para lidar com volume, variedade e velocidade de dados.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Realidades imersivas</h3>
+          <p>
+            AR, VR, MR e XR aparecem como tecnologias de visualização,
+            treinamento, simulação e interação avançada.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Conectividade avançada</h3>
+          <p>
+            5G, Wi-Fi 6 e IPv6 são tratados como pilares para maior velocidade,
+            densidade de dispositivos e comunicação em larga escala.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Ecossistema digital ampliado</h3>
+          <p>
+            IA, drones, IoT, smart cities, computação cognitiva, metaverso,
+            simulação 3D e sistemas autônomos aparecem como parte desse
+            conjunto.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">IA na Indústria 4.0</h2>
+        <p class="section-subtitle">Ponto central do material</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Uso de grandes volumes de dados</h3>
+          <p>
+            A aula mostra a IA como ferramenta para identificar padrões e
+            tendências, aumentando eficiência e reduzindo consumo de energia em
+            processos industriais.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>ANI</h3>
+          <p>
+            A Inteligência Artificial Limitada aparece como IA focada em tarefas
+            específicas, com capacidade de processar muito dado, mas sem
+            generalização plena.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>AGI</h3>
+          <p>
+            A Inteligência Artificial Geral é apresentada como estágio mais
+            amplo, ligado a leitura de padrões, interpretação e aprendizado
+            automático em maior escala.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>ASI</h3>
+          <p>
+            A Superinteligência é discutida como hipótese de inteligência
+            superior ao desempenho humano em diversas dimensões, incluindo
+            riscos e debate ético.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Simulação e prototipagem virtual</h2>
+        <p class="section-subtitle">Ferramentas e lógica de uso</p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chip" /></div>
+          <h3>1. Modelar</h3>
+          <p>Representar digitalmente processos, ambientes ou equipamentos.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="server" /></div>
+          <h3>2. Simular</h3>
+          <p>Reproduzir virtualmente o comportamento do sistema real.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>3. Analisar</h3>
+          <p>Coletar dados, prever cenários e validar decisões.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="spark" /></div>
+          <h3>4. Otimizar</h3>
+          <p>Aplicar melhorias antes da implementação física.</p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A simulação é apresentada como forma de reproduzir virtualmente
+        condições reais, aumentando previsibilidade e segurança na tomada de
+        decisão.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Leitura estratégica da aula</h2>
+        <p class="section-subtitle">Como interpretar esse conteúdo</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Tecnologia com propósito</h3>
+          <p>
+            A adoção de tecnologias emergentes só faz sentido quando orientada a
+            valor, eficiência, experiência, sustentabilidade e resultados
+            concretos.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Transformação gradual</h3>
+          <p>
+            O material reforça que inovação real exige visão incremental,
+            conhecimento, planejamento e adaptação organizacional.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Integração com o restante do curso</h3>
+          <p>
+            Esta aula conecta IoT, cloud, IA, dados e simulação, funcionando
+            como ponte para integração cloud + IoT e Big Data nas aulas
+            seguintes.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Visão sistêmica</h3>
+          <p>
+            O aluno deve sair desta aula entendendo que tecnologia emergente é
+            ecossistema, não ferramenta isolada.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Escolha uma tecnologia emergente citada na aula e defina:</p>
+          <ul class="topic-list">
+            <li>qual problema ela ajuda a resolver;</li>
+            <li>em que contexto da Indústria 4.0 ela se aplica;</li>
+            <li>quais benefícios ela pode gerar;</li>
+            <li>quais barreiras de implantação existem;</li>
+            <li>como ela poderia se conectar a IoT, cloud ou dados.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

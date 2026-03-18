@@ -1,0 +1,83 @@
+---
+import { aulas } from "../data/aulas";
+import Icon from "./Icon.astro";
+
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3l7 4v10l-7 4-7-4V7l7-4Z"></path>
+          <path d="M9 10h6M9 14h6M12 7v10"></path>
+        </svg>
+      </div>
+
+      <div>
+        <p class="sidebar-kicker">Curso</p>
+        <h1>IoT, Cloud e Indústria 4.0</h1>
+      </div>
+    </div>
+
+    <p class="sidebar-text">
+      Blog educacional com aulas, resumos, tópicos principais e materiais
+      complementares.
+    </p>
+  </div>
+
+  <div class="sidebar-mini-panel">
+    <div class="mini-item">
+      <strong>11</strong>
+      <span>Aulas</span>
+    </div>
+    <div class="mini-item">
+      <strong>IoT</strong>
+      <span>Prática</span>
+    </div>
+    <div class="mini-item">
+      <strong>Cloud</strong>
+      <span>Dados</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Menu lateral das aulas">
+    <ul>
+      <li>
+        <a
+          href="/"
+          class={currentPath === "/" ? "active home-link" : "home-link"}
+        >
+          <span class="nav-icon nav-home">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 10.5 12 3l9 7.5"></path>
+              <path d="M5 9.5V20h14V9.5"></path>
+            </svg>
+          </span>
+          <span class="lesson-title">Início</span>
+        </a>
+      </li>
+
+      {
+        aulas.map((aula) => (
+          <li>
+            <a
+              href={`/${aula.slug}`}
+              class={currentPath === `/${aula.slug}` ? "active" : ""}
+            >
+              <span class="nav-icon">
+                <Icon name={aula.icone} />
+              </span>
+
+              <span class="lesson-text-group">
+                <span class="lesson-number">{aula.numero}</span>
+                <span class="lesson-title">{aula.titulo}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>

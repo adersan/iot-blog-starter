@@ -1,0 +1,440 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-10");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-09");
+const proximaAula = aulas.find((item) => item.slug === "aula-11");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-10"];
+---
+
+<BaseLayout
+  title="Aula 10 | Integração Cloud + Big Data — Parte 1"
+  description="Aula 10 do curso de IoT, Cloud e Indústria 4.0: Python com Big Data, Hadoop, HDFS, MapReduce, ecossistema SciPy e introdução à análise de dados em escala."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-dados">
+            <Icon name="database" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Big Data</span>
+          <span class="lesson-chip">Python</span>
+          <span class="lesson-chip">Hadoop</span>
+          <span class="lesson-chip">Analytics</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Python com Big Data e analytics em escala</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span
+              >Bibliotecas, ecossistema e fundamentos de engenharia de dados</span
+            >
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Introdução conceitual e aplicada</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Integração Cloud + Big Data — Parte 2</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="database" />
+          </div>
+          <h3>Por que Python com Big Data?</h3>
+          <p>
+            A aula apresenta Python como uma linguagem muito adotada em Big Data
+            por combinar velocidade de desenvolvimento, vasto ecossistema e
+            forte apoio à computação científica e análise de dados.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="chart" />
+          </div>
+          <h3>Onde está o ganho?</h3>
+          <p>
+            Mesmo quando outras linguagens podem ter vantagem pontual de
+            desempenho, Python reduz o tempo de construção das soluções e amplia
+            a produtividade do time.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="cloud" />
+          </div>
+          <h3>Como isso conecta com cloud?</h3>
+          <p>
+            O material liga Python, Big Data e infraestrutura cloud como base
+            para processamento, análise, visualização e modelos preditivos em
+            escala.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">
+          O que o aluno deve compreender nesta etapa
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender o papel do Python em projetos de Big Data.</li>
+            <li>Conhecer a relação entre Python, Hadoop, HDFS e MapReduce.</li>
+            <li>Visualizar o ecossistema principal para análise de dados.</li>
+            <li>Relacionar Big Data com computação científica e analytics.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Compreender a rotina de um cientista de dados.</li>
+            <li>Perceber a importância de modelos preditivos.</li>
+            <li>Conhecer cenários de empregabilidade e formação.</li>
+            <li>Preparar base para a continuação prática da Aula 11.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Conceitos fundamentais</h2>
+        <p class="section-subtitle">Base teórica da aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>Python com Big Data</h3>
+          <p>
+            O material destaca que Python possui muitas bibliotecas para
+            trabalhar com Big Data e permite desenvolver soluções de forma mais
+            rápida do que várias alternativas tradicionais.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Produtividade vs. desempenho</h3>
+          <p>
+            A aula compara Python com Java, argumentando que, em grandes volumes
+            de dados, a diferença prática pode ser compensada pela rapidez de
+            desenvolvimento.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Escala e volume</h3>
+          <p>
+            O conteúdo reforça que Big Data envolve dados em GBs, TBs e além,
+            exigindo ferramentas e arquitetura apropriadas para acesso e
+            processamento.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Modelos preditivos</h3>
+          <p>
+            Um dos papéis centrais do cientista de dados é construir modelos
+            capazes de evidenciar padrões e apontar tendências a partir de dados
+            históricos.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Python e o ecossistema Hadoop</h2>
+        <p class="section-subtitle">Integração apresentada no slide</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>HDFS</h3>
+          <p>
+            A aula mostra que Python pode acessar a API HDFS, conectando-se à
+            instalação Hadoop, lendo e gravando arquivos e consultando
+            informações do sistema de arquivos.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>PyDoop</h3>
+          <p>
+            O material cita o pacote PyDoop como caminho para integração com
+            HDFS e implementação de programas Hadoop em Python.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>MapReduce</h3>
+          <p>
+            Também é mostrado que problemas complexos podem ser resolvidos com
+            MapReduce em Python, inclusive com exemplos como contagem de
+            palavras.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Integração com cloud</h3>
+          <p>
+            O conteúdo associa esse ecossistema a formações e trilhas de
+            engenharia de dados em ambientes de nuvem.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Formação Python com Big Data</h2>
+        <p class="section-subtitle">Competências destacadas na aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>Entender o papel do engenheiro de Big Data</h3>
+          <p>
+            O material ressalta a aplicação de tecnologias de dados para
+            resolução de problemas relacionados a grandes volumes de informação.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>ETL</h3>
+          <p>
+            Extrair, transformar e carregar dados a partir de arquivos, bancos
+            de dados e outras fontes aparece como uma competência central.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Aceleração de processamento</h3>
+          <p>
+            A aula reforça a necessidade de acelerar o tratamento de grandes
+            bases de dados e planejar arquiteturas adequadas.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Análise e visualização</h3>
+          <p>
+            A formação também envolve transformar dados em visualização e
+            interpretação útil para apoiar decisões.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Ecossistema Python para Big Data</h2>
+        <p class="section-subtitle">
+          Bibliotecas e base técnica citadas no material
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Bibliotecas centrais</h3>
+          <ul class="topic-list">
+            <li>
+              <strong>SciPy:</strong> ecossistema de matemática, ciências e engenharia.
+            </li>
+            <li>
+              <strong>NumPy:</strong> arrays N-dimensionais e computação vetorial.
+            </li>
+            <li><strong>Pandas:</strong> estruturas e análise de dados.</li>
+            <li><strong>Matplotlib:</strong> gráficos e visualização.</li>
+            <li><strong>IPython:</strong> console interativo avançado.</li>
+            <li><strong>SymPy:</strong> matemática simbólica.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Usos práticos no dia a dia</h3>
+          <ul class="topic-list">
+            <li>Acessar e manipular dados.</li>
+            <li>Calcular estatísticas.</li>
+            <li>Criar relatórios e visualizações.</li>
+            <li>Desenvolver modelos explicativos e preditivos.</li>
+            <li>Integrar modelos a ambientes de produção.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Mercado e empregabilidade</h2>
+        <p class="section-subtitle">Leitura estratégica da aula</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3>Perfis profissionais</h3>
+          <p>
+            O material destaca carreiras como Data Analyst, Data Scientist e
+            Data Engineer, com forte demanda no mercado.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Salários e vagas</h3>
+          <p>
+            A aula traz indicadores de mercado extraídos de plataformas como
+            LinkedIn e Glassdoor para reforçar a atratividade da área.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Plataformas de formação</h3>
+          <p>
+            São citadas diversas trilhas e escolas, como Alura, Coursera,
+            FreeCodeCamp, Kaggle, Udacity, Udemy e outras.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Posicionamento da linguagem</h3>
+          <p>
+            A mensagem da aula é clara: Python é uma das escolhas mais fortes
+            para análise de dados, ciência de dados e aprendizado de máquina.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Fluxo lógico da atuação com Big Data</h2>
+        <p class="section-subtitle">Como organizar o raciocínio da aula</p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="database" /></div>
+          <h3>1. Coletar</h3>
+          <p>Extrair dados de arquivos, bancos, APIs ou outras fontes.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="server" /></div>
+          <h3>2. Processar</h3>
+          <p>Preparar, transformar e organizar dados em grande escala.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>3. Analisar</h3>
+          <p>Calcular estatísticas, gerar gráficos e identificar padrões.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="spark" /></div>
+          <h3>4. Predizer</h3>
+          <p>
+            Construir modelos explicativos ou preditivos para apoiar decisões.
+          </p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A lógica central da aula é:
+        <strong>coletar → transformar → analisar → modelar</strong>.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>Estruture um plano inicial de projeto Big Data definindo:</p>
+          <ul class="topic-list">
+            <li>qual fonte de dados será utilizada;</li>
+            <li>como os dados serão extraídos e preparados;</li>
+            <li>quais bibliotecas Python serão usadas;</li>
+            <li>qual análise ou visualização será construída;</li>
+            <li>qual pergunta de negócio a solução pretende responder.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

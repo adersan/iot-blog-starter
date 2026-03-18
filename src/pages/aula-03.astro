@@ -1,0 +1,392 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { aulas } from "../data/aulas";
+import { recursosPorAula } from "../data/recursos";
+import Icon from "../components/Icon.astro";
+import LessonResources from "../components/LessonResources.astro";
+
+const aula = aulas.find((item) => item.slug === "aula-03");
+const aulaAnterior = aulas.find((item) => item.slug === "aula-02");
+const proximaAula = aulas.find((item) => item.slug === "aula-04");
+
+const topicos = aula ? aula.topicos : [];
+const resources = recursosPorAula["aula-03"];
+---
+
+<BaseLayout
+  title="Aula 03 | Plataforma Arduino Tinkercad"
+  description="Aula 03 do curso de IoT, Cloud e Indústria 4.0: plataforma Arduino, Arduino Uno R3, Tinkercad e introdução à integração com Python."
+>
+  <div class="container">
+    <section class="lesson-hero">
+      <div class="lesson-hero-content">
+        <div class="page-kicker">Aula {aula?.numero}</div>
+
+        <div class="lesson-hero-title-row">
+          <div class="lesson-icon lesson-icon-xl lesson-theme-arduino">
+            <Icon name="chip" />
+          </div>
+
+          <div>
+            <h1>{aula?.titulo}</h1>
+            <p class="lesson-hero-summary">{aula?.resumo}</p>
+          </div>
+        </div>
+
+        <div class="lesson-hero-badges">
+          <span class="lesson-chip">Arduino</span>
+          <span class="lesson-chip">Tinkercad</span>
+          <span class="lesson-chip">Uno R3</span>
+          <span class="lesson-chip">Python + Hardware</span>
+        </div>
+      </div>
+
+      <aside class="lesson-hero-side card">
+        <h3>Visão rápida</h3>
+
+        <ul class="lesson-side-list">
+          <li>
+            <strong>Tema:</strong>
+            <span>Plataforma Arduino e simulação com Tinkercad</span>
+          </li>
+          <li>
+            <strong>Foco:</strong>
+            <span>Prototipagem eletrônica e primeiros programas</span>
+          </li>
+          <li>
+            <strong>Nível:</strong>
+            <span>Introdução prática</span>
+          </li>
+          <li>
+            <strong>Próxima aula:</strong>
+            <span>Arduino Tinkercad — Prática</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-3">
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="chip" />
+          </div>
+          <h3>O que é Arduino?</h3>
+          <p>
+            Arduino é uma plataforma de prototipagem eletrônica de hardware
+            livre, voltada ao desenvolvimento de projetos de eletrônica,
+            automação e robótica, com linguagem derivada de C/C++ e forte apelo
+            didático.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="network" />
+          </div>
+          <h3>Por que usar Tinkercad?</h3>
+          <p>
+            O Tinkercad permite criar e testar circuitos diretamente no
+            navegador, sem instalação local, facilitando simulação, aprendizado
+            e validação inicial.
+          </p>
+        </article>
+
+        <article class="card info-card">
+          <div class="info-card-icon">
+            <Icon name="code" />
+          </div>
+          <h3>Onde entra Python?</h3>
+          <p>
+            A aula introduz integração com Python por bibliotecas como PySerial
+            e PyFirmata, permitindo comunicação e controle externo sobre
+            projetos Arduino.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Objetivos da aula</h2>
+        <p class="section-subtitle">
+          O que o aluno deve compreender nesta etapa
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <ul class="topic-list">
+            <li>Entender o que é a plataforma Arduino.</li>
+            <li>Conhecer o Arduino Uno R3 como placa de entrada.</li>
+            <li>Identificar os principais componentes e pinos da placa.</li>
+            <li>Compreender a lógica de prototipagem eletrônica.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <ul class="topic-list">
+            <li>Aprender a estrutura básica de programação do Arduino.</li>
+            <li>Executar o programa Blink como primeiro teste.</li>
+            <li>Utilizar o Tinkercad para simulação de circuitos.</li>
+            <li>Relacionar Arduino com integração Python e IoT.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lesson-section-highlight">
+      <div class="section-header-inline">
+        <h2 class="section-title">Conceitos fundamentais</h2>
+        <p class="section-subtitle">Base teórica sobre a plataforma</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card concept-card">
+          <h3>Plataforma de prototipagem</h3>
+          <p>
+            O Arduino foi projetado para facilitar o aprendizado e o
+            desenvolvimento rápido de soluções eletrônicas, com baixo custo,
+            comunidade forte e curva de aprendizado acessível.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Arduino Uno R3</h3>
+          <p>
+            A aula destaca o Uno R3 como um dos modelos mais populares e
+            adequados para quem está dando os primeiros passos em eletrônica e
+            IoT.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Hardware + software</h3>
+          <p>
+            A placa é usada junto ao ambiente de desenvolvimento para programar
+            o microcontrolador e interagir com sensores, LEDs, atuadores e
+            periféricos.
+          </p>
+        </article>
+
+        <article class="card concept-card">
+          <h3>Tinkercad</h3>
+          <p>
+            O Tinkercad funciona como ambiente de simulação de circuitos e
+            código, permitindo criar projetos sem depender da placa física no
+            primeiro momento.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Características do Arduino Uno R3</h2>
+        <p class="section-subtitle">Pontos centrais apresentados no slide</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Componentes e estrutura</h3>
+          <ul class="topic-list">
+            <li>Microcontrolador ATmega328p.</li>
+            <li>14 entradas/saídas digitais.</li>
+            <li>6 entradas analógicas.</li>
+            <li>Oscilador de 16 MHz.</li>
+            <li>Conector USB e alimentação externa.</li>
+            <li>Botão de reset e conectores de interface.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Uso prático dos pinos</h3>
+          <ul class="topic-list">
+            <li>Entradas analógicas para leitura de sensores.</li>
+            <li>Saídas digitais e PWM para controle de atuadores.</li>
+            <li>Integração com LEDs, motores, relés e cargas externas.</li>
+            <li>Conexão ao computador por USB para gravação do firmware.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="section-header-inline">
+        <h2 class="section-title">Estrutura básica da programação Arduino</h2>
+        <p class="section-subtitle">Modelo lógico de todo sketch</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card challenge-card">
+          <h3><code>setup()</code></h3>
+          <p>
+            Função usada para configurações iniciais do programa, como definição
+            de pinos de entrada e saída e inicialização de comunicação serial.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3><code>loop()</code></h3>
+          <p>
+            Função executada continuamente, responsável pelo comportamento
+            principal da aplicação embarcada.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Primeiro programa: Blink</h3>
+          <p>
+            O exemplo clássico da aula faz o LED do pino 13 piscar em intervalos
+            regulares, servindo como teste inicial de funcionamento.
+          </p>
+        </article>
+
+        <article class="card challenge-card">
+          <h3>Upload e gravação</h3>
+          <p>
+            Após compilar o código, o firmware é enviado ao microcontrolador,
+            que passa a executar o programa gravado na placa.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Fluxo de uso no Tinkercad</h2>
+        <p class="section-subtitle">Como a aula estrutura a prática inicial</p>
+      </div>
+
+      <div class="iot-flow">
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chip" /></div>
+          <h3>1. Criar circuito</h3>
+          <p>Entrar no Tinkercad e abrir um novo projeto em circuits.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="code" /></div>
+          <h3>2. Programar</h3>
+          <p>Escrever o sketch usando setup, loop e comandos básicos.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="wifi" /></div>
+          <h3>3. Simular</h3>
+          <p>Executar o circuito virtualmente e validar o comportamento.</p>
+        </div>
+
+        <div class="iot-flow-arrow">→</div>
+
+        <div class="iot-flow-step">
+          <div class="iot-flow-icon"><Icon name="chart" /></div>
+          <h3>4. Evoluir</h3>
+          <p>
+            Expandir o projeto para sensores, atuadores e integração Python.
+          </p>
+        </div>
+      </div>
+
+      <div class="note section-note">
+        A lógica pedagógica da aula é:
+        <strong>montar → programar → simular → testar</strong>.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header-inline">
+        <h2 class="section-title">Python e Arduino</h2>
+        <p class="section-subtitle">Integração apresentada no material</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card app-card">
+          <h3>PySerial</h3>
+          <p>
+            Biblioteca Python usada para leitura e gravação de dados seriais,
+            permitindo comunicação com o Arduino por porta serial.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>PyFirmata</h3>
+          <p>
+            Interface Python para o protocolo Firmata, útil para controlar
+            hardware a partir de aplicações Python.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Ambientes Python</h3>
+          <p>
+            A sequência do curso conecta a prototipagem em Arduino a ambientes
+            Python e aplicações práticas em IoT.
+          </p>
+        </article>
+
+        <article class="card app-card">
+          <h3>Base para próximas aulas</h3>
+          <p>
+            Esta aula prepara o terreno para a prática no Tinkercad e para
+            projetos embarcados com lógica mais aplicada.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-2">
+        <article class="card">
+          <h2 class="section-title section-title-small">
+            Tópicos principais da aula
+          </h2>
+          <ul class="topic-list">
+            {topicos.map((topico) => <li>{topico}</li>)}
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title section-title-small">Atividade sugerida</h2>
+          <p>
+            Monte um plano inicial para um circuito simples com Arduino,
+            definindo:
+          </p>
+          <ul class="topic-list">
+            <li>qual componente será controlado;</li>
+            <li>quais pinos serão utilizados;</li>
+            <li>qual lógica ficará no <code>setup()</code>;</li>
+            <li>qual comportamento ficará no <code>loop()</code>;</li>
+            <li>como esse experimento seria validado no Tinkercad.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <LessonResources resources={resources} />
+
+    <section class="section">
+      <div class="lesson-navigation">
+        {
+          aulaAnterior && (
+            <a href={`/${aulaAnterior.slug}`} class="button button-secondary">
+              ← Aula anterior: {aulaAnterior.numero} — {aulaAnterior.titulo}
+            </a>
+          )
+        }
+
+        {
+          proximaAula && (
+            <a href={`/${proximaAula.slug}`} class="button button-primary">
+              Próxima aula: {proximaAula.numero} — {proximaAula.titulo}
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>
