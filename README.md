@@ -438,4 +438,3 @@ IoT, Cloud e Indústria 4.0
 
 Depois de colar no `README.md`, rode:
 
-```bash
