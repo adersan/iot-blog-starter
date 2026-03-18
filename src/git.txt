@@ -1,3 +1,4 @@
+git status
 git add .
-git commit -m "Ajusta menu mobile e estilos do sidebar"
+git commit -m "Favicon"
 git push origin main
