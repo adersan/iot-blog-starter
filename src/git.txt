@@ -1,0 +1,3 @@
+git add .
+git commit -m "Ajusta menu mobile e estilos do sidebar"
+git push origin main

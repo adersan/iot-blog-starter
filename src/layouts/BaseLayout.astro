@@ -17,8 +17,23 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <button
+      class="mobile-menu-button"
+      id="mobileMenuButton"
+      type="button"
+      aria-label="Abrir menu"
+      aria-controls="siteSidebar"
+      aria-expanded="false"
+    >
+      ☰ Menu
+    </button>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <div class="app-shell">
-      <Sidebar />
+      <div id="siteSidebarWrapper">
+        <Sidebar />
+      </div>
 
       <main class="content" id="topo">
         <slot />
@@ -30,5 +45,52 @@ const {
         </footer>
       </main>
     </div>
+
+    <script>
+      const menuButton = document.getElementById("mobileMenuButton");
+      const sidebarWrapper = document.getElementById("siteSidebarWrapper");
+      const overlay = document.getElementById("sidebarOverlay");
+
+      if (menuButton && sidebarWrapper && overlay) {
+        const openMenu = () => {
+          sidebarWrapper.classList.add("is-open");
+          overlay.classList.add("is-visible");
+          menuButton.setAttribute("aria-expanded", "true");
+          document.body.classList.add("menu-open");
+        };
+
+        const closeMenu = () => {
+          sidebarWrapper.classList.remove("is-open");
+          overlay.classList.remove("is-visible");
+          menuButton.setAttribute("aria-expanded", "false");
+          document.body.classList.remove("menu-open");
+        };
+
+        const toggleMenu = () => {
+          if (sidebarWrapper.classList.contains("is-open")) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        };
+
+        menuButton.addEventListener("click", toggleMenu);
+        overlay.addEventListener("click", closeMenu);
+
+        sidebarWrapper.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            if (window.innerWidth <= 900) {
+              closeMenu();
+            }
+          });
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 900) {
+            closeMenu();
+          }
+        });
+      }
+    </script>
   </body>
 </html>
